@@ -9,10 +9,10 @@ jobs:
 
     steps:
       - name: Check out the code
-        uses: actions/checkout@v3
+        uses: actions/checkout
 
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python
         with:
           python-version: '3.13'
 
@@ -23,8 +23,14 @@ jobs:
 
       - name: Build with PyInstaller
         run: pyinstaller main.spec
+
       - name: Upload build artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact
         with:
           name: built-executable
           path: dist/
+
+      - name: Clean up build files
+        run: |
+          rmdir /S /Q build
+          rmdir /S /Q __pycache__
