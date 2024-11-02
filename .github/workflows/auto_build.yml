@@ -32,5 +32,5 @@ jobs:
 
       - name: Clean up build files
         run: |
-          rmdir /S /Q build
-          rmdir /S /Q __pycache__
+            Remove-Item -Recurse -Force build
+            Remove-Item -Recurse -Force __pycache__
